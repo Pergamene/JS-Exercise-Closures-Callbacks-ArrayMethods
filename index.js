@@ -15,7 +15,7 @@
  * should return 'foofoo'.
 */
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+  return callback(stringList[0]);
 }
 
 // ⭐️ Example Challenge END ⭐️
@@ -88,11 +88,7 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  let sum = 0;
-  for (let i = 0; i < numberList.length; i++) {
-    sum += numberList[i];
-  }
-  return callback(sum);
+  return callback(numberList.reduce((accumulator, currentValue) => {return accumulator + currentValue;}, 0));
 }
 
 /**
@@ -183,11 +179,7 @@ function processDuplicateFree(list, callback) {
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
-  let fullNames = [];
-  for (let i = 0; i < runners.length; i++) {
-    fullNames.push(`${runners[i].last_name}, ${runners[i].first_name}`);
-  }
-  return fullNames;
+  return runners.map((runner) => {return `${runner.last_name}, ${runner.first_name}`;});
 }
 
 /**
@@ -203,11 +195,7 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  let firstNames = [];
-  for (let i = 0; i < runners.length; i++) {
-    firstNames.push(runners[i].first_name.toUpperCase());
-  }
-  return firstNames;
+  return runners.map((runner) => {return runner.first_name.toUpperCase();})
 }
 
 /**
@@ -224,13 +212,7 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  let filteredRunners = [];
-  for (let i = 0; i < runners.length; i++) {
-    if (runners[i].shirt_size === tShirtSize) {
-      filteredRunners.push(runners[i]);
-    }
-  }
-  return filteredRunners;
+  return runners.filter((runner) => {return runner.shirt_size === tShirtSize;})
 }
 
 /**
@@ -244,8 +226,7 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @returns a number which is the sum of the donations by all runners.
 */
 function tallyUpDonations(runners) {
-  const reducer = (total, runner) => total + runner.donation;
-  return runners.reduce(reducer, 0);
+return runners.reduce((total, runner) => {return total + runner.donation;}, 0);
 }
 
 /////////////// CLOSURES ///////////////
